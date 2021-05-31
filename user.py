@@ -1,5 +1,6 @@
 class User:
-  def __init__(self, firstName, lastName, passWord):
+  def __init__(self, socialMedia, firstName, lastName, passWord):
+    self.social_media = socialMedia
     self.first_name = firstName
     self.last_name = lastName
     self.pass_word = passWord

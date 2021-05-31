@@ -4,13 +4,14 @@ from existingAcount import Accounts
 
 class testUsers (unittest.TestCase):
   def setUp(self):
-    self.aNewUser = User("Samuel", "Abusa", "6991Avin")
+    self.aNewUser = User("Twitter","Samuel", "Abusa", "blabla34323")
     self.existing_account = Accounts("Twitter", "Samuel Abusa", "56789@/*-")
   
   def test_init(self):
+    self.assertEqual(self.aNewUser.social_media, "Twitter")
     self.assertEqual(self.aNewUser.first_name, "Samuel")
     self.assertEqual(self.aNewUser.last_name, "Abusa")
-    self.assertEqual(self.aNewUser.pass_word, "6991Avin")
+    self.assertEqual(self.aNewUser.pass_word, "blabla34323")
     
     self.assertEqual(self.existing_account.account, "Twitter")
     self.assertEqual(self.existing_account.userName, "Samuel Abusa")

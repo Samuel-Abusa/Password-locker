@@ -12,6 +12,12 @@ def saveNewUser(userAcount):
   #Saves the user account info
   userAcount.save_user_info()
 
+def remove_new_account(rmAccount):
+  '''
+  Deletes new accounts created
+  '''
+  rmAccount.delete_user_info()
+
 def other_account(accName, uName, exPword):
   #Let's user add an existing account
   existingAcc = Accounts(accName, uName, exPword)

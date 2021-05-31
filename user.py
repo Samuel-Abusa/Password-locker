@@ -13,4 +13,3 @@ class User:
   def delete_user_info(self):
     User.newUser.remove(self)
   
-

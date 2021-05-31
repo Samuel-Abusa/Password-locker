@@ -15,3 +15,9 @@ class Accounts:
   #Delete an account
   def remove_account(self):
     Accounts.user_data_list.remove(self)
+  
+  @classmethod
+  def find_existing_account(cls, accountName):
+    for user_data in cls.user_data_list:
+      if user_data.account == accountName:
+        return user_data

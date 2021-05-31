@@ -45,6 +45,9 @@ def find_existing_acc(userAcc):
 def check_if_acc_exists(userAcc):
   return Accounts.find_existing_account(userAcc)
 
+def display_all_accounts():
+  return Accounts.display_all_accounts()
+
 
 def all():
   name = input('Hello welcome to your pasword locker what is your name: ')
@@ -52,7 +55,7 @@ def all():
   print(f'Hello {name} what would you like to do')
   print('\n')
   while True:
-    print("Use these short codes to : Create account - ca, Save your existing account - ea, Generate Password - gen, Find old account - fa, exit - ex")
+    print("Use these short codes to : Create account - ca, Save your existing account - ea, Generate Password - gen, Find old account - fa, Display all accounts - da, exit - ex")
     short_code = input().lower()
     if short_code == 'ca':
       sMedia = input("What is the name of the platform you'd like to create an account for : ")
@@ -101,7 +104,13 @@ def all():
         print(f'Your password: {account.existingPassword}')
       else:
         print('This account does not exist.')
-
+    
+    elif short_code == 'da':
+      if display_all_accounts():
+        for accounts in display_all_accounts():
+          print(f'Your social media platform: {accounts.account}\n Your username: {accounts.userName} \n Your Password {accounts.existingPassword}')
+      else:
+        print("You don't have any accounts saved yet")
 
     elif short_code == 'ex':
       print('Have a lovely day')

@@ -11,4 +11,7 @@ class Accounts:
   #Get to add new user data in the user_data_list array
   def store_user_data(self):
     Accounts.user_data_list.append(self)
-    
+
+  #Delete an account
+  def remove_account(self):
+    Accounts.user_data_list.remove(self)

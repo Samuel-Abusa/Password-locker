@@ -10,4 +10,7 @@ class User:
   def save_user_info(self):
     User.newUser.append(self)
   
+  def delete_user_info(self):
+    User.newUser.remove(self)
+  
 

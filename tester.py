@@ -38,7 +38,7 @@ class testUsers (unittest.TestCase):
     Testing store_user_data to see whether we can save the added existing account account
     '''
     self.existing_account.store_user_data()
-    self.assertEqual(len(Accounts.user_data_list), 3)
+    self.assertEqual(len(Accounts.user_data_list), 4)
   
   def test_delete_account(self):
     '''
@@ -58,6 +58,14 @@ class testUsers (unittest.TestCase):
     self.existing_account.store_user_data()
     found_account = Accounts.find_existing_account('Twitter')
     self.assertEqual(found_account.userName, self.existing_account.userName)
+  
+  def test_if_acc_exists(self):
+    self.existing_account.store_user_data()
+    account_exists = Accounts.check_if_acc_exists('Twitter')
+    self.assertTrue(account_exists)
+  
+  def test_display_all_accounts(self):
+    self.assertEqual(Accounts.display_all_accounts(), Accounts.user_data_list)
 
 
 if __name__ == '__main__':

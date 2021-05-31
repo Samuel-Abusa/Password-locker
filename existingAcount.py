@@ -17,7 +17,17 @@ class Accounts:
     Accounts.user_data_list.remove(self)
   
   @classmethod
+  def check_if_acc_exists(cls, accountName):
+    for user_data in cls.user_data_list:
+      if user_data.account == accountName:
+        return True
+
+  @classmethod
   def find_existing_account(cls, accountName):
     for user_data in cls.user_data_list:
       if user_data.account == accountName:
         return user_data
+  
+  @classmethod
+  def display_all_accounts(cls):
+    return cls.user_data_list

@@ -4,12 +4,16 @@ from existingAcount import Accounts
 from user import User
 
 def newAccount(social,fName, lName, pWord):
-  #This function creates a new user account
+  '''
+  This function creates a new user account
+  '''
   new_account = User(social, fName, lName, pWord)
   return new_account
 
 def saveNewUser(userAcount):
-  #Saves the user account info
+  '''
+  Saves the user account info
+  '''
   userAcount.save_user_info()
 
 def remove_new_account(rmAccount):
@@ -18,21 +22,37 @@ def remove_new_account(rmAccount):
   '''
   rmAccount.delete_user_info()
 
+
 def other_account(accName, uName, exPword):
-  #Let's user add an existing account
+  '''
+  Let's user add an existing account
+  '''
   existingAcc = Accounts(accName, uName, exPword)
   return existingAcc
 
 def store_acc(accnt):
+  '''
+  Saves the existing account info
+  '''
   accnt.store_user_data()
 
+def find_existing_acc(userAcc):
+  '''
+  Function that finds the account by account name and returns the contact
+  '''
+  return Accounts.find_existing_account(userAcc)
+
+def check_if_acc_exists(userAcc):
+  return Accounts.find_existing_account(userAcc)
+
+
 def all():
-  name = input('Hello welcome to your pasword locker what is your name:')
+  name = input('Hello welcome to your pasword locker what is your name: ')
   print('\n')
   print(f'Hello {name} what would you like to do')
   print('\n')
   while True:
-    print("Use these short codes to : Create account password - ca, Save your existing account - ea, Generate Password - gen, exit - ex")
+    print("Use these short codes to : Create account - ca, Save your existing account - ea, Generate Password - gen, Find old account - fa, exit - ex")
     short_code = input().lower()
     if short_code == 'ca':
       sMedia = input("What is the name of the platform you'd like to create an account for : ")
@@ -70,10 +90,25 @@ def all():
       #Join the characters geneated with the random sample and put in an array hence creating the password
       pAssWord = ''.join(pAss)
       print(f'Your new password is: {pAssWord}')
+    
+    elif short_code == 'fa':
+      search_account = input("What is the name of the social media platform you'd like to find: ")
+      if check_if_acc_exists(search_account):
+        account = find_existing_acc(search_account)
+        print(f'Your account: {account.account}')
+        print(f'Your username: {account.userName}')
+        print('-' * 30)
+        print(f'Your password: {account.existingPassword}')
+      else:
+        print('This account does not exist.')
+
 
     elif short_code == 'ex':
       print('Have a lovely day')
       break
+
+    else:
+      print("I didn't get that.... Please use the short codes")
 
 if __name__ == '__main__':
 

@@ -26,7 +26,7 @@ class testUsers (unittest.TestCase):
   
   def test_delete_user_info(self):
     self.aNewUser.save_user_info()
-    test_new_account = User('Facebool', 'James', 'Mathew', 'yeahyeahyeah234')
+    test_new_account = User('Facebook', 'James', 'Mathew', 'yeahyeahyeah234')
     test_new_account.save_user_info()
 
     self.aNewUser.delete_user_info()
@@ -38,7 +38,7 @@ class testUsers (unittest.TestCase):
     Testing store_user_data to see whether we can save the added existing account account
     '''
     self.existing_account.store_user_data()
-    self.assertEqual(len(Accounts.user_data_list), 2)
+    self.assertEqual(len(Accounts.user_data_list), 3)
   
   def test_delete_account(self):
     '''
@@ -50,6 +50,14 @@ class testUsers (unittest.TestCase):
 
     test_new_existing_account.remove_account()
     self.assertEqual(len(Accounts.user_data_list), 1)
+  
+  def test_find_existing_account(self):
+    '''
+    Test to see if the user can find their account
+    '''
+    self.existing_account.store_user_data()
+    found_account = Accounts.find_existing_account('Twitter')
+    self.assertEqual(found_account.userName, self.existing_account.userName)
 
 
 if __name__ == '__main__':

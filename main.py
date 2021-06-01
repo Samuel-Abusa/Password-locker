@@ -22,6 +22,9 @@ def remove_new_account(rmAccount):
   '''
   rmAccount.delete_user_info()
 
+def check_new_account_exists(tAcc):
+  return Accounts.check_newAccount_exists(tAcc)
+
 
 def other_account(accName, uName, exPword):
   '''
@@ -48,6 +51,9 @@ def check_if_acc_exists(userAcc):
 def display_all_accounts():
   return Accounts.display_all_accounts()
 
+def delete_existing_account(targetAcc):
+  targetAcc.remove_account()
+
 
 def all():
   name = input('Hello welcome to your pasword locker what is your name: ')
@@ -55,7 +61,7 @@ def all():
   print(f'Hello {name} what would you like to do')
   print('\n')
   while True:
-    print("Use these short codes to : Create account - ca, Save your existing account - ea, Generate Password - gen, Find old account - fa, Display all accounts - da, exit - ex")
+    print("Use these short codes to : \n Create account - ca \n Save your existing account - ea \n Generate Password - gen \n Find old account - fa \n Display all existing accounts - da \n Remove existing account - rme \n exit - ex")
     short_code = input().lower()
     if short_code == 'ca':
       sMedia = input("What is the name of the platform you'd like to create an account for : ")
@@ -72,7 +78,18 @@ def all():
       exstPass = input("What is your account's password: ")
 
       store_acc(other_account(acc, usName, exstPass))
-      print(f'Your {acc} has been saved')
+      print(f'Your {acc} account has been saved')
+      print('\n')
+##################################################################################################################################
+    elif short_code == 'rme':
+      account_to_be_rmvd = input('Which account would you like to remove: ')
+      if check_if_acc_exists(account_to_be_rmvd):
+        delete_existing_account(account_to_be_rmvd)
+        print(f'Your {account_to_be_rmvd} has been deleted')
+        print('\n')
+      else:
+        print('This account does not exist')
+        print('\n')
     
     elif short_code == 'gen':
       print('Hello welcome to the password generator')
@@ -93,6 +110,7 @@ def all():
       #Join the characters geneated with the random sample and put in an array hence creating the password
       pAssWord = ''.join(pAss)
       print(f'Your new password is: {pAssWord}')
+      print('\n')
     
     elif short_code == 'fa':
       search_account = input("What is the name of the social media platform you'd like to find: ")
@@ -109,8 +127,10 @@ def all():
       if display_all_accounts():
         for accounts in display_all_accounts():
           print(f'Your social media platform: {accounts.account}\n Your username: {accounts.userName} \n Your Password {accounts.existingPassword}')
+          print('\n')
       else:
         print("You don't have any accounts saved yet")
+        print('\n')
 
     elif short_code == 'ex':
       print('Have a lovely day')

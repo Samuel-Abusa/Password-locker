@@ -86,16 +86,6 @@ def all():
       store_acc(other_account(acc, usName, exstPass))
       print(f'Your {acc} account has been saved')
       print('\n')
-##################################################################################################################################
-    elif short_code == 'rme':
-      account_to_be_rmvd = input('Which account would you like to remove: ')
-      if check_if_acc_exists(account_to_be_rmvd):
-        delete_existing_account(account_to_be_rmvd)
-        print(f'Your {account_to_be_rmvd} has been deleted')
-        print('\n')
-      else:
-        print('This account does not exist')
-        print('\n')
     
     elif short_code == 'gen':
       print('Hello welcome to the password generator')

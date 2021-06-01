@@ -13,3 +13,8 @@ class User:
   def delete_user_info(self):
     User.newUser.remove(self)
   
+  @classmethod
+  def check_newAccount_exists(cls, accName):
+    for user in cls.newUser:
+      if user.social_media == accName:
+        return True

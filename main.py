@@ -25,6 +25,12 @@ def remove_new_account(rmAccount):
 def check_new_account_exists(tAcc):
   return Accounts.check_newAccount_exists(tAcc)
 
+def find_new_acc(aCC):
+  return User.find_new_account(aCC)
+
+def display_all_new_acc():
+  return User.display_all_new_acc()
+
 
 def other_account(accName, uName, exPword):
   '''
